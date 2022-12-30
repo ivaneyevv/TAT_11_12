@@ -314,3 +314,9 @@
 2022-12-30 02:20:40 - [32minfo[39m: Now, showing logs from mocha
 2022-12-30 02:20:48 - [32minfo[39m: Configuring to run tests on BrowserStack
 2022-12-30 02:21:13 - [32minfo[39m: Local binary stopped
+2022-12-30 03:56:08 - [32minfo[39m: Reading configs from C:\Users\ivaneyevv\OneDrive\Desktop\TAT_11_12\TAT_11_12\framework\browserstack.yml
+2022-12-30 03:56:14 - [32minfo[39m: Local binary started successfully
+2022-12-30 03:56:15 - [32minfo[39m: Running your mocha tests across 1 platforms
+2022-12-30 03:56:15 - [32minfo[39m: Now, showing logs from mocha
+2022-12-30 03:56:21 - [32minfo[39m: Configuring to run tests on BrowserStack
+2022-12-30 03:56:52 - [32minfo[39m: Local binary stopped
