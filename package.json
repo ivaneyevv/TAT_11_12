@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/**/*.js",
-    "sample-test": "browserstack-node-sdk mocha test/location.spec.js --timeout=60000"
+    "sample-test": "browserstack-node-sdk mocha test//*.spec.js --timeout=60000"
   },
   "keywords": [],
   "author": "Voronin Ivan",

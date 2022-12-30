@@ -4,11 +4,11 @@ const { Builder, Browser, } = require('selenium-webdriver');
 const Driver = require("../driver/Driver");
 const Constants = require("../config/constants");
 const DataReaderService = require("../services/dataReader.service");
+const QnaPage = require('../pages/qnaPage');
 const HomePage = require("../pages/homePage");
-const LocationPage = require("../pages/locationPage");
 const { driver } = require('../driver/Driver');
 
-describe('Change location.', () => {
+describe('Search any answer on any question.', () => {
     before(async function () {
       const props = await DataReaderService.getTestData('test.properties');
       for (const key in props) {
@@ -20,19 +20,17 @@ describe('Change location.', () => {
         this.driver = await Driver.createDriver();
       });
 
-    it('Should show changed location.', async function () {
+    it('Should show valid entered product.', async function () {
 
-        const homePage = new HomePage(this.driver);  
+        const homePage = new HomePage(this.driver);
         await homePage.openPage();
-        await homePage.clickLocationButton();
-        const locationPage = new LocationPage(this.driver); 
-        //await locationPage.clickInputLocation(); 
-        //await locationPage.inputLocationValue(validLocationValue)
-        await locationPage.clickLocationAdress();
-        await locationPage.clickMapLocationAdress();
-        expect(await locationPage.checkNewcurrentLocation()).to.be.contain(validLocationValue);
+        await homePage.clickQnaButton();
+        const qnaPage = new QnaPage(this.driver);
+        //await qnaPage.clickQuestionForm();
+        await qnaPage.inputQuestionForm(this.validQuestionValue);
+        await qnaPage.clickAnswer();
+        expect(await searchPage.checkAnswerOnQuestion()).to.be.contain(this.validAnswerResult);
     }).timeout(Constants.TEST_TIMEOUT);
-
 
 
 

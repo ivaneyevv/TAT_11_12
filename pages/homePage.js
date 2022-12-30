@@ -5,11 +5,15 @@ const logger = require("../logger");
 
 class HomePage extends BasePage {
   static PAGE_URL = 'https://www.wildberries.by/';
+  
   static BAG_BUTTON_XPATH = '//*[@id="basketContent"]/div[3]/a/span';
+  
   static INPUT_FORM_XPATH = '//*[@id="searchInput"]';
   static INPUT_SEARCH_VALUE_TEXT_XPATH = '//*[@id="searchInput"]';
+
   static CURRENT_CURRENCY_XPATH = '/html/body/div[1]/header/div/div[1]/ul/li[1]/span';
   static NEW_CURRENCY_XPATH = '/html/body/div[1]/header/div/div[1]/ul/li[1]/div/div/div/div/form/fieldset/label[2]/span/span[2]';
+  
   static ITEM_BUTTON_XPATH = '/html/body/div[1]/main/div[2]/div/div[2]/div/div[3]/div[1]/ul/li[1]/a/div[1]/button';
   static ADD_ITEM_TO_BAG_XPATH = '/html/body/div[1]/div/div/div[2]/div[2]/div[5]/div/button[2]/span[1]';
   static CLOSE_ITEM_BUTTON_XPATH = '/html/body/div[1]/a';
@@ -17,6 +21,14 @@ class HomePage extends BasePage {
 
   static CURRENT_LOCATION_XPATH = '/html/body/div[1]/header/div/div[1]/ul/li[2]/span';
 
+  static CHATTING_BUTTON_XPATH = '/html/body/div[4]/button';
+  static CHATTING_TEXTAREA_XPATH = '/html/body/div[4]/div/section/div[3]/form/div/div/textarea';
+
+  //static BURGER_XPATH = '/html/body/div[1]/header/div/div[2]/div[1]/button';
+  //static BEAUTY_XPATH = '/html/body/div[2]/div/div[2]/ul/li[7]/a';
+  //static ACCESSORIES_XPATH = '';
+
+  static QUESTIONS_AND_ANSWERS_XPATH = '/html/body/div[1]/footer/div/div[1]/div[1]/div[1]/ul/li[8]/a';
 
 
   openPage = async () => super.openPage(HomePage.PAGE_URL);
@@ -88,6 +100,20 @@ class HomePage extends BasePage {
   async clickLocationButton() {
     logger.info("Click on the location button");
     const element = await this.findByXpath(HomePage.CURRENT_LOCATION_XPATH);
+    await element.click();
+    return this;
+  }
+
+  async clickChattingButton() {
+    logger.info("Click on the chatting button");
+    const element = await this.findByXpath(HomePage.CHATTING_BUTTON_XPATH);
+    await element.click();
+    return this;
+  }
+
+  async clickQnaButton() {
+    logger.info("Click on the questions&answers button");
+    const element = await this.findByXpath(HomePage.QUESTIONS_AND_ANSWERS_XPATH);
     await element.click();
     return this;
   }

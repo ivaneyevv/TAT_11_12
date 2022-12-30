@@ -5,10 +5,10 @@ const Driver = require("../driver/Driver");
 const Constants = require("../config/constants");
 const DataReaderService = require("../services/dataReader.service");
 const HomePage = require("../pages/homePage");
-const LocationPage = require("../pages/locationPage");
+const SupportPage = require("../pages/supportPage");
 const { driver } = require('../driver/Driver');
 
-describe('Change location.', () => {
+describe('Test chatting.', () => {
     before(async function () {
       const props = await DataReaderService.getTestData('test.properties');
       for (const key in props) {
@@ -20,17 +20,15 @@ describe('Change location.', () => {
         this.driver = await Driver.createDriver();
       });
 
-    it('Should show changed location.', async function () {
+    it('Should show sended message.', async function () {
 
         const homePage = new HomePage(this.driver);  
         await homePage.openPage();
-        await homePage.clickLocationButton();
-        const locationPage = new LocationPage(this.driver); 
-        //await locationPage.clickInputLocation(); 
-        //await locationPage.inputLocationValue(validLocationValue)
-        await locationPage.clickLocationAdress();
-        await locationPage.clickMapLocationAdress();
-        expect(await locationPage.checkNewcurrentLocation()).to.be.contain(validLocationValue);
+        await homePage.clickChattingButton();
+        const supportPage = new SupportPage(this.driver); 
+        await supportPage.clickChattingTextarea();
+        await supportPage.inputChattingValue(this.chattingValue);
+        expect(await supportPage.checkNewcurrentMessage()).to.be.contain(chattingResult);
     }).timeout(Constants.TEST_TIMEOUT);
 
 
